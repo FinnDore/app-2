@@ -15,7 +15,7 @@ const server = z.object({
     .preprocess(
       // This makes Vercel deployments not fail if you don't set NEXTAUTH_URL
       // Since NextAuth.js automatically uses the VERCEL_URL if present.
-      (str) => process.env.RAILWAY_STATIC_URL ?? str,
+      (str) => "https://" + process.env.RAILWAY_STATIC_URL ?? str,
       z.string().url()
     )
     .transform((x) => {
